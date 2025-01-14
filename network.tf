@@ -7,9 +7,9 @@ resource "aws_vpc" "vpc" {
 }
 
 resource "aws_subnet" "subnet" {
-  vpc_id     = aws_vpc.vpc.id
-  cidr_block = "10.0.1.0/24"
-
+  vpc_id            = aws_vpc.vpc.id
+  cidr_block        = "10.0.1.0/24"
+  availability_zone = "sa-east-1a"
 
   tags = {
     Name = "subnet-terraform"
@@ -65,6 +65,4 @@ resource "aws_vpc_security_group_egress_rule" "egress_rule" {
   security_group_id = aws_security_group.security_group.id
   cidr_ipv4         = "0.0.0.0/0"
   ip_protocol       = "-1"
-  from_port         = 0
-  to_port           = 0
 }
